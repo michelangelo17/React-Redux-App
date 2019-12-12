@@ -4,6 +4,8 @@ import {
   GET_RATES_START,
   GET_RATES_SUCCESS,
   GET_RATES_ERROR,
+  SET_SECOND_COUNTRY_NAME,
+  SET_COMPARISON_CURRENCY,
 } from '../actions/currencyActions'
 
 const initialState = {
@@ -289,12 +291,14 @@ const initialState = {
       countries: ['South Africa'],
     },
   ],
-  countryName: '',
+  firstCountryName: '',
   baseCurrency: {},
   allRates: {},
   isLoading: false,
   error: null,
-  secondCurrency: {},
+  secondCountryName: '',
+  comparisonCurrency: {},
+  selectedExchangeRate: null,
 }
 
 export const currencyReducer = (state = initialState, action) => {
@@ -302,12 +306,24 @@ export const currencyReducer = (state = initialState, action) => {
     case SET_BASE_COUNTRY_NAME:
       return {
         ...state,
-        countryName: action.payload,
+        firstCountryName: action.payload,
       }
     case SET_BASE_CURRENCY:
       return {
         ...state,
         baseCurrency: state.currencyOptions.filter(currency =>
+          currency.countries.find(country => country === action.payload)
+        )[0],
+      }
+    case SET_SECOND_COUNTRY_NAME:
+      return {
+        ...state,
+        secondCountryName: action.payload,
+      }
+    case SET_COMPARISON_CURRENCY:
+      return {
+        ...state,
+        comparisonCurrency: state.currencyOptions.filter(currency =>
           currency.countries.find(country => country === action.payload)
         )[0],
       }
