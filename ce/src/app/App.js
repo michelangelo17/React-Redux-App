@@ -6,12 +6,18 @@ import ExchangeInfo from './components/main/ExchangeInfo'
 
 const App = () => {
   return (
-    <div className='App'>
+    <>
       <h1>Simple Currency Exchanger</h1>
-      <FirstCurrency />
-      <SecondCurrency />
-      <ExchangeInfo />
-    </div>
+      <main>
+        <section className='dropdowns'>
+          <FirstCurrency />
+          <SecondCurrency />
+        </section>
+        <section className='result'>
+        <ExchangeInfo />
+        </section>
+      </main>
+    </>
   )
 }
 

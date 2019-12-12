@@ -4,8 +4,9 @@ import Select from 'react-select'
 import { setBase, getRates } from '../../../../redux/actions/currencyActions'
 
 const FirstCurrency = () => {
-
-  const { currencyOptions, baseCurrency, firstCountryName } = useSelector(state => state.currency)
+  const { currencyOptions, baseCurrency, firstCountryName } = useSelector(
+    state => state.currency
+  )
 
   const dispatch = useDispatch()
 
@@ -23,17 +24,21 @@ const FirstCurrency = () => {
   }
 
   return (
-    <>
+    <div>
       <Select
         placeholder='Select country'
         onChange={handlChange}
         className='FirstCurrencySelector'
         options={countryList}
       />
-      <h2>{firstCountryName}</h2>
-      <h3>Currency: {baseCurrency.currencyName}</h3>
-      <h3>Currency Code: {baseCurrency.currencyCode}</h3>
-    </>
+      {firstCountryName && (
+        <>
+          <h2>{firstCountryName}</h2>
+          <h3>Currency: {baseCurrency.currencyName}</h3>
+          <h3>Currency Code: {baseCurrency.currencyCode}</h3>
+        </>
+      )}
+    </div>
   )
 }
 

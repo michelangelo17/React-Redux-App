@@ -23,18 +23,24 @@ const SecondCurrency = () => {
     dispatch(setComparison(e.value))
   }
 
+  console.log(secondCountryName)
   return (
-    <>
+    <div>
       <Select
         placeholder='Select country to compare'
         onChange={handlChange}
         className='SecondCurrencySelector'
         options={countryList}
+        value={secondCountryName && countryList.secondCountryName}
       />
-      <h2>{secondCountryName}</h2>
-      <h3>Currency: {comparisonCurrency.currencyName}</h3>
-      <h3>Currency Code: {comparisonCurrency.currencyCode}</h3>
-    </>
+      {secondCountryName && (
+        <>
+          <h2>{secondCountryName}</h2>
+          <h3>Currency: {comparisonCurrency.currencyName}</h3>
+          <h3>Currency Code: {comparisonCurrency.currencyCode}</h3>
+        </>
+      )}
+    </div>
   )
 }
 

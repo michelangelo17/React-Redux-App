@@ -6,10 +6,19 @@ h1 {
   text-align: center;
 }
 
-
-.FirstCurrencySelector {
-  width: 40%;
+.dropdowns {
+  display: flex;
+  justify-content: space-around;
+  max-width: 600px;
+  margin: 50px auto;
+  .FirstCurrencySelector {
+    min-width: 200px;
+  }
+  .SecondCurrencySelector {
+    min-width: 200px;
+  }
 }
-.SecondCurrencySelector {
-  width: 40%;
+
+.result {
+  text-align: center;
 }
