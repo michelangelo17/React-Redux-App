@@ -4,6 +4,6 @@ import App from './App'
 
 test('renders learn react link', () => {
   const { getByText } = render(<App />)
-  const title = getByText(/Lord of the Rings Info/i)
+  const title = getByText(/currency exchanger/i)
   expect(title).toBeInTheDocument()
 })
