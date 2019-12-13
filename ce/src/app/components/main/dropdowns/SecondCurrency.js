@@ -23,7 +23,6 @@ const SecondCurrency = () => {
     dispatch(setComparison(e.value))
   }
 
-  console.log(secondCountryName)
   return (
     <div>
       <Select

@@ -7,7 +7,6 @@ const FirstCurrency = () => {
   const { currencyOptions, baseCurrency, firstCountryName } = useSelector(
     state => state.currency
   )
-
   const dispatch = useDispatch()
 
   const countryList = currencyOptions
@@ -16,8 +15,10 @@ const FirstCurrency = () => {
     .map(country => ({ value: country, label: country }))
 
   useEffect(() => {
-    dispatch(getRates(baseCurrency.currencyCode))
-  }, [baseCurrency.currencyCode, dispatch])
+    baseCurrency &&
+      baseCurrency.currencyCode &&
+      dispatch(getRates(baseCurrency.currencyCode))
+  }, [baseCurrency, dispatch])
 
   const handlChange = e => {
     dispatch(setBase(e.value))
@@ -30,8 +31,11 @@ const FirstCurrency = () => {
         onChange={handlChange}
         className='FirstCurrencySelector'
         options={countryList}
+        value={countryList.filter(
+          country => country.value === firstCountryName
+        )}
       />
-      {firstCountryName && (
+      {baseCurrency && baseCurrency.currencyName && (
         <>
           <h2>{firstCountryName}</h2>
           <h3>Currency: {baseCurrency.currencyName}</h3>
